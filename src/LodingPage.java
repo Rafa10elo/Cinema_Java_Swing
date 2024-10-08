@@ -11,7 +11,7 @@ public class LodingPage extends JPanel {
     private float messageOpacity = 0.0f;
     private boolean showMessage = false;
     private FadeCompleteListener fadeCompleteListener;
-
+// صلح اللودنق مشان الله يزلمة
     public LodingPage() {
         Timer spinnerTimer = new Timer(100, new ActionListener() {
             @Override
