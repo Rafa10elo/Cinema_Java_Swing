@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MyFrame extends JFrame{
+
     MyFrame(){
         String[] genres={"Horror","Action","Romance","Adventure"};
         this.setTitle("Cinema");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         this.setSize(500,500);
+        LodingPage lodingPage = new LodingPage();
         String[] showtime={"Thursday: 06:00PM-08:00PM-10:00PM","Friday: 06:00PM-08:00PM-10:00PM"};
 
         Movie movie1=new Movie(1,genres[1],"NAME1",showtime[0]);
@@ -47,6 +49,8 @@ public class MyFrame extends JFrame{
         panel3.add(label);
         panel3.add(list);
         this.add(panel3,BorderLayout.CENTER);
+        this.add(lodingPage);
+
 
         this.setVisible(true);
 
