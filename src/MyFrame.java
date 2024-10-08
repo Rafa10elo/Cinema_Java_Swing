@@ -38,6 +38,7 @@ public class MyFrame extends JFrame {
         panel3 = new JPanel(new FlowLayout());
         panel1.setBackground(Color.darkGray);
         panel2.setBackground(Color.darkGray);
+        panel1.add(list);
         panel3.setBackground(Color.YELLOW);
         panel1.setPreferredSize(new Dimension(50, 50));
         panel2.setPreferredSize(new Dimension(50, 50));

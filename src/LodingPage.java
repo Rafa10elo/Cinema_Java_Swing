@@ -48,7 +48,7 @@ public class LodingPage extends JPanel {
                     messageOpacity = 1.0f;
                     ((Timer) e.getSource()).stop();
 
-                    // Notify that the fade-in is complete
+                    // Notify that the effect has finished
                     if (fadeCompleteListener != null) {
                         fadeCompleteListener.onFadeComplete();
                     }
