@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -15,6 +16,7 @@ public class LoginPanel extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         setBackground(Color.BLACK);
+        setBorder(new RoundedBorder(20));
         setPreferredSize(new Dimension(400, 400));
 
 

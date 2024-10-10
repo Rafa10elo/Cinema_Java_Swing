@@ -10,6 +10,7 @@ public class MainMenuPanel extends JPanel {
         this.parentFrame = parentFrame;
         this.cinemaManagement = cinemaManagement;
         this.setBackground(Color.BLACK);
+        setBorder(new RoundedBorder(20));
         setLayout(new BorderLayout());
 
 

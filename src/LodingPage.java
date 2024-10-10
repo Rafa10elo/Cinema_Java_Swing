@@ -14,6 +14,7 @@ public class LodingPage extends JPanel {
 
     public LodingPage() {
         setBackground(Color.BLACK);
+
         Timer spinnerTimer = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

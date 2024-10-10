@@ -13,6 +13,9 @@ public class RegistrationPanel extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         setBackground(Color.BLACK);
+        setBorder(new RoundedBorder(20));
+
+
 
 
         JLabel userLabel = new JLabel("Username:");
