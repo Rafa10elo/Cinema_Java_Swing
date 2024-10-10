@@ -11,8 +11,9 @@ public class LodingPage extends JPanel {
     private float messageOpacity = 0.0f;
     private boolean showMessage = false;
     private FadeCompleteListener fadeCompleteListener;
-// صلح اللودنق مشان الله يزلمة
+
     public LodingPage() {
+        setBackground(Color.BLACK);
         Timer spinnerTimer = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -27,7 +28,7 @@ public class LodingPage extends JPanel {
         });
         spinnerTimer.start();
 
-        Timer messageTimer = new Timer(5000, new ActionListener() {
+        Timer messageTimer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 showMessage = true;
@@ -72,18 +73,22 @@ public class LodingPage extends JPanel {
         int centerX = getWidth() / 2;
         int centerY = getHeight() / 2;
 
+
         if (!showMessage) {
             for (int i = 0; i < DOT_COUNT; i++) {
                 double theta = Math.toRadians(i * 360.0 / DOT_COUNT + angle);
                 int x = (int) (centerX + Math.cos(theta) * (SIZE / 2 - DOT_RADIUS));
                 int y = (int) (centerY + Math.sin(theta) * (SIZE / 2 - DOT_RADIUS));
                 float opacity = (i + 1) / (float) DOT_COUNT;
-                g2d.setColor(new Color(0, 0, 0, opacity));
+
+
+                g2d.setColor(new Color(255, 255, 255, (int) (opacity * 255)));
                 g2d.fillOval(x - DOT_RADIUS, y - DOT_RADIUS, DOT_RADIUS * 2, DOT_RADIUS * 2);
             }
         } else {
             g2d.setFont(new Font("Arial", Font.BOLD, 36));
-            g2d.setColor(new Color(0, 0, 0, messageOpacity));
+            // Set the welcome message color to light white
+            g2d.setColor(new Color(255, 255, 255, (int) (messageOpacity * 255)));
             String welcomeMessage = "Welcome!";
             FontMetrics fm = g2d.getFontMetrics();
             int messageWidth = fm.stringWidth(welcomeMessage);
