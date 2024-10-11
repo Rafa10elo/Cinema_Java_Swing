@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MyFrame extends JFrame {
 
@@ -15,20 +17,24 @@ public class MyFrame extends JFrame {
         this.setSize(600, 400);
         setLocationRelativeTo(null);
 
+
         lodingPage = new LodingPage();
         cinemaManagement = new CinemaManagement();
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-
+        ViewBookingsPanel viewBookingsPanel = new ViewBookingsPanel(this, cinemaManagement);
         LoginPanel loginPanel = new LoginPanel(this, cinemaManagement);
         RegistrationPanel registrationPanel = new RegistrationPanel(this, cinemaManagement);
         MainMenuPanel mainMenuPanel = new MainMenuPanel(this, cinemaManagement);
+        BookingPanel bookingPanel = new BookingPanel(this, cinemaManagement);
 
 
         mainPanel.add(loginPanel, "Login");
         mainPanel.add(registrationPanel, "Register");
         mainPanel.add(mainMenuPanel, "MainMenu");
+        mainPanel.add(bookingPanel, "Booking");
+        mainPanel.add(viewBookingsPanel, "ViewBookings");
 
 
         JPanel centeredPanel = new JPanel(new GridBagLayout());
@@ -46,15 +52,27 @@ public class MyFrame extends JFrame {
             this.revalidate();
             this.repaint();
         });
-
         //this.getContentPane().setBackground();
         this.setVisible(true);
     }
+    public JPanel getPanel(String panelName) {
+        for (Component comp : mainPanel.getComponents()) {
+            if (comp instanceof JPanel && panelName.equals(comp.getName())) {
+                return (JPanel) comp;
+            }
+        }
+        return null;
+    }
 
     // for switching between the panels
+    // for swiching between the pannels
     public void switchToPanel(String panelName) {
         cardLayout.show(mainPanel, panelName);
     }
 
 
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new MyFrame());
+    }
 }

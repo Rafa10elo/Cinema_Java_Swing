@@ -7,9 +7,11 @@ public class LoginPanel extends JPanel {
     private MyFrame parentFrame;
     private CinemaManagement cinemaManagement;
 
+
     public LoginPanel(MyFrame parentFrame, CinemaManagement cinemaManagement) {
         this.parentFrame = parentFrame;
         this.cinemaManagement = cinemaManagement;
+
 
 
 
@@ -29,6 +31,7 @@ public class LoginPanel extends JPanel {
         add(userLabel, gbc);
 
         JTextField userText = new JTextField(15);
+        userText. setBorder(new RoundedBorder(20));
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         add(userText, gbc);
@@ -42,6 +45,7 @@ public class LoginPanel extends JPanel {
         add(passLabel, gbc);
 
         JPasswordField passText = new JPasswordField(15);
+        passText.  setBorder(new RoundedBorder(20));
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         add(passText, gbc);
@@ -50,6 +54,7 @@ public class LoginPanel extends JPanel {
         JButton loginButton = new JButton("Login");
         loginButton.setForeground(Color.WHITE);
         loginButton.setBackground(Color.BLUE);
+        loginButton.setBorder(new RoundedBorder(20));
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.CENTER;
@@ -59,6 +64,8 @@ public class LoginPanel extends JPanel {
         JButton registerButton = new JButton("Register");
         registerButton.setForeground(Color.WHITE);
         registerButton.setBackground(Color.BLUE);
+
+        registerButton.setBorder(new RoundedBorder(20));
         gbc.gridx = 1;
         add(registerButton, gbc);
 
@@ -74,7 +81,8 @@ public class LoginPanel extends JPanel {
 
             boolean success = cinemaManagement.login(username, password);
             if (success) {
-                parentFrame.switchToPanel("MainMenu");
+                    parentFrame.switchToPanel("MainMenu");
+
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid credentials.", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -83,5 +91,8 @@ public class LoginPanel extends JPanel {
         registerButton.addActionListener(e -> {
             parentFrame.switchToPanel("Register");
         });
+
+
     }
+
 }
