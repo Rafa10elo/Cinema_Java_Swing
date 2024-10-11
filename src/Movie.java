@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+
 public class Movie {
     private int id;
     private  String genre;
@@ -9,6 +7,7 @@ public class Movie {
     private String posterPath;
     private String description;
     Movie(){}
+
     Movie(int id, String genre,String name,String ShowTimes,String posterPath,String description)
     {
         this.id=id;
@@ -39,20 +38,5 @@ public class Movie {
     }
     public String getDescription(){
         return description;
-    }
-    void add(Movie movie){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("MOVIES.txt", true));
-            writer.write(movie.id + "|" + movie.genre + "|" + movie.name + "|" + movie.ShowTimes + "\n");
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-    @Override
-    public String toString() {
-        return "ID: " + id + ", Genre: " + genre + ", Name: " + name + ", Show Time: " + ShowTimes;
     }
 }
