@@ -12,7 +12,7 @@ public class MyFrame2 extends JFrame {
 
     public MyFrame2() {
         setTitle("Movies");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         setSize(800, 600);
         setBackground(Color.BLACK);
 
