@@ -7,9 +7,11 @@ public class LoginPanel extends JPanel {
     private MyFrame parentFrame;
     private CinemaManagement cinemaManagement;
 
+
     public LoginPanel(MyFrame parentFrame, CinemaManagement cinemaManagement) {
         this.parentFrame = parentFrame;
         this.cinemaManagement = cinemaManagement;
+
 
 
 
@@ -84,5 +86,8 @@ public class LoginPanel extends JPanel {
         registerButton.addActionListener(e -> {
             parentFrame.switchToPanel("Register");
         });
+
+
     }
+
 }

@@ -10,7 +10,7 @@ public class ViewBookingsPanel extends JPanel {
         this.parentFrame = parentFrame;
         this.cinemaManagement = cinemaManagement;
         System.out.println(1);
-
+      
         JButton backButton = new JButton("Back to Main Menu");
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
