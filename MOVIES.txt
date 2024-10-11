@@ -1,3 +1,6 @@
 1|Thriller|Love Hurts|Sunday:10:00PM-12:00PM|Six strangers are invited to a dinner party by a charming and enigmatic host, lured by the promise of substantial financial reward if they last the whole evening. However, all is not what it seems.
 2|Action|MISSION IMPOSSIBLE|Friday:08:00PM-10:00PM-12:00PM|The plot follows Ethan Hunt (Cruise) and his mission to uncover the mole who has framed him for the murders of his entire IMF team.
-
+3|Sci-Fi|Interstellar|Saturday:09:00PM-11:00PM|It is about Earth's last chance to find a habitable planet before a lack of resources causes the human race to go extinct.
+4|Fantasy|Harry Potter|Thursday:08:00PM-10:00PM|The story begins when 11-year-old orphan Harry discovers that his parents were wizards and he starts his education in magic at Hogwart's School of Witchcraft and Wizardry.
+5|Comedy|The Hangover|Thursday:10:00PM-12:00PM|Three buddies wake up from a bachelor party in Las Vegas, with no memory of the previous night and the bachelor missing. They make their way around the city in order to find their friend before his wedding.
+6|Horror|The Nun|Friday:10:00PM-12:00PM|When a young nun at a cloistered abbey in Romania takes her own life, a priest with a haunted past and a novitiate on the threshold of her final vows are sent by the Vatican to investigate. Together they uncover the order's unholy secret.
