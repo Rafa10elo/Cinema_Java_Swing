@@ -11,8 +11,9 @@ public class BookingPanel extends JPanel {
 
         setLayout(new GridBagLayout());
         setBackground(Color.BLACK);
-
         GridBagConstraints gbc = new GridBagConstraints();
+        setBorder(new RoundedBorder(20));
+
         gbc.insets = new Insets(10, 10, 10, 10);
 
 
@@ -53,6 +54,7 @@ public class BookingPanel extends JPanel {
 
         JSpinner seatSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1)); //for testing
         gbc.gridy = 2;
+        gbc.gridx =1;
         add(seatSpinner, gbc);
 
 

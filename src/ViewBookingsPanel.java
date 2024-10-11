@@ -14,7 +14,19 @@ public class ViewBookingsPanel extends JPanel {
         JButton backButton = new JButton("Back to Main Menu");
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
-        add(backButton,BorderLayout.SOUTH);
+        setBorder(new RoundedBorder(20));
+
+
+
+        JButton refreshButton = new JButton("get the Tickets");
+        setLayout(new BorderLayout());
+        setBackground(Color.BLACK);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.add(refreshButton,BorderLayout.EAST);
+        panel.add(backButton,BorderLayout.WEST);
+        add(panel,BorderLayout.SOUTH);
 
         JLabel titleLabel = new JLabel("Your Booked Tickets:", SwingConstants.CENTER);
         titleLabel.setForeground(Color.WHITE);
@@ -27,6 +39,21 @@ public class ViewBookingsPanel extends JPanel {
         JScrollPane scrollPane = new JScrollPane(ticketsPanel);
         add(scrollPane, BorderLayout.CENTER);
 
+
+        backButton.addActionListener(e ->
+        {
+            parentFrame.switchToPanel("MainMenu");
+        });
+        refreshButton.addActionListener(e -> {
+            SwingUtilities.invokeLater(() -> {
+                getTickets();
+
+
+            });
+        });
+    }
+    public void getTickets(){
+        ticketsPanel.removeAll();
         User currentUser = cinemaManagement.getCurrentUser();
         if (currentUser != null) {
             ArrayList<Ticket> tickets = (ArrayList<Ticket>) currentUser.getTicketsList();
@@ -34,11 +61,13 @@ public class ViewBookingsPanel extends JPanel {
                 JLabel noTicketsLabel = new JLabel("No tickets booked yet.");
                 noTicketsLabel.setForeground(Color.WHITE);
                 ticketsPanel.add(noTicketsLabel);
+
             } else {
                 for (Ticket ticket : tickets) {
                     TicketPanel ticketPanel = new TicketPanel(ticket, cinemaManagement, currentUser, ticketsPanel);
                     ticketsPanel.add(ticketPanel);
                 }
+
             }
         } else {
             System.out.println();
@@ -46,59 +75,9 @@ public class ViewBookingsPanel extends JPanel {
             noUserLabel.setForeground(Color.RED);
             ticketsPanel.add(noUserLabel);
         }
-        backButton.addActionListener(e -> parentFrame.switchToPanel("MainMenu"));
+        revalidate();
+        repaint();
 
     }
-//    public void loadTickets() {
-//        User currentUser = cinemaManagement.getCurrentUser();
-//        if (currentUser != null) {
-//            ArrayList<Ticket> tickets = (ArrayList<Ticket>) currentUser.getTicketsList();
-//            if (tickets.isEmpty()) {
-//                JLabel noTicketsLabel = new JLabel("No tickets booked yet.");
-//                noTicketsLabel.setForeground(Color.WHITE);
-//                ticketsPanel.add(noTicketsLabel);
-//            } else {
-//                for (Ticket ticket : tickets) {
-//                    addTicketPanel(ticket);
-//                }
-//            }
-//        } else {
-//            JLabel noUserLabel = new JLabel("No user logged in.");
-//            noUserLabel.setForeground(Color.RED);
-//            ticketsPanel.add(noUserLabel);
-//        }
-//
-//    }
-//
-//    public void reload() {
-//
-//        ticketsPanel.removeAll();
-//        User currentUser = cinemaManagement.getCurrentUser();
-//        if (currentUser != null) {
-//            ArrayList<Ticket> tickets = (ArrayList<Ticket>) currentUser.getTicketsList();
-//            if (tickets.isEmpty()) {
-//                JLabel noTicketsLabel = new JLabel("No tickets booked yet.");
-//                noTicketsLabel.setForeground(Color.WHITE);
-//                ticketsPanel.add(noTicketsLabel);
-//            } else {
-//                for (Ticket ticket : tickets) {
-//                    addTicketPanel(ticket);
-//                }
-//            }
-//        } else {
-//            JLabel noUserLabel = new JLabel("No user logged in.");
-//            noUserLabel.setForeground(Color.RED);
-//            ticketsPanel.add(noUserLabel);
-//        }
-//
-//
-//        ticketsPanel.revalidate();
-//        ticketsPanel.repaint();
-//    }
-//    public void addTicketPanel(Ticket ticket) {
-//        TicketPanel ticketPanel = new TicketPanel(ticket, cinemaManagement, cinemaManagement.getCurrentUser(), ticketsPanel);
-//        ticketsPanel.add(ticketPanel);
-//        ticketsPanel.revalidate();
-//        ticketsPanel.repaint();
-//    }
+
 }

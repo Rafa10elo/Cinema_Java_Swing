@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static int USERS_COUNT=0;
+    private static int USERS_COUNT=CinemaManagement.getUsersCountFromFile();
     private int USER_ID;
     private String userName;
     private String password;
@@ -13,6 +13,7 @@ public class User {
 
    public User(String userName , String password,  String email){
         USERS_COUNT++;
+      CinemaManagement.setUsersCountToFile();
         USER_ID =USERS_COUNT;
         this.userName = userName;
         this.password =password;
@@ -27,6 +28,7 @@ public class User {
         this.email = email;
         this.adminProp = adminProp;
         this.ticketsList = ticketsList;
+
     }
 
     public static User fromFileFormat(String userData) {
@@ -100,6 +102,9 @@ public class User {
         return USER_ID;
     }
 
+    public static int getTheStaticCounter(){
+       return USERS_COUNT;
+    }
 
 
 }

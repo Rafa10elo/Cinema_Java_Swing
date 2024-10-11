@@ -15,7 +15,7 @@ public class TicketPanel extends JPanel {
 
         setLayout(new GridLayout(1, 4));
         setBackground(Color.DARK_GRAY);
-        setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+        setBorder(new RoundedBorder(20));
 
 
         JLabel movieLabel = new JLabel("Movie: " + ticket.getMovieName());

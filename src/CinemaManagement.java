@@ -9,6 +9,7 @@ public class CinemaManagement {
     public CinemaManagement() {
 
         this.usersList = getUsersFromFile();
+        for(User user : usersList) System.out.println(user);
     }
     public void register(String username, String password, String email) {
         User newUser = new User(username, password, email);
@@ -96,7 +97,25 @@ public class CinemaManagement {
         System.out.println("No user found for CURRENT_PERSON_ID: " + CURRENT_PERSON_ID);  // Debug
         return null;
     }
+    public static void setUsersCountToFile() {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Lenovo\\Desktop\\Cinema_Java_Swing\\Files_Of_The_Project\\CNT_FILE.txt"))) {
+            bufferedWriter.write(Integer.toString(User.getTheStaticCounter()));
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public static int getUsersCountFromFile() {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Lenovo\\Desktop\\Cinema_Java_Swing\\Files_Of_The_Project\\CNT_FILE.txt"))) {
+            String line = bufferedReader.readLine();
+            return (line != null) ? Integer.parseInt(line) : 0;
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    }
 
 
 
-}
+

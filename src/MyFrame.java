@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MyFrame extends JFrame {
 
@@ -14,6 +16,7 @@ public class MyFrame extends JFrame {
         this.setLayout(new BorderLayout());
         this.setSize(600, 400);
         setLocationRelativeTo(null);
+
 
         lodingPage = new LodingPage();
         cinemaManagement = new CinemaManagement();
@@ -49,7 +52,6 @@ public class MyFrame extends JFrame {
             this.revalidate();
             this.repaint();
         });
-
         //this.getContentPane().setBackground();
         this.setVisible(true);
     }
@@ -66,6 +68,7 @@ public class MyFrame extends JFrame {
     public void switchToPanel(String panelName) {
         cardLayout.show(mainPanel, panelName);
     }
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new MyFrame());
