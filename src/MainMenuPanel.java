@@ -41,6 +41,9 @@ public class MainMenuPanel extends JPanel {
 
         add(buttonPanel, BorderLayout.CENTER);
 
+        bookTicketButton.addActionListener(e -> parentFrame.switchToPanel("Booking"));
+        viewBookingsButton.addActionListener(e -> parentFrame.switchToPanel("ViewBookings"));
+
 
         logoutButton.addActionListener(e -> {
 

@@ -74,7 +74,8 @@ public class LoginPanel extends JPanel {
 
             boolean success = cinemaManagement.login(username, password);
             if (success) {
-                parentFrame.switchToPanel("MainMenu");
+                    parentFrame.switchToPanel("MainMenu");
+
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid credentials.", "Error", JOptionPane.ERROR_MESSAGE);
             }
