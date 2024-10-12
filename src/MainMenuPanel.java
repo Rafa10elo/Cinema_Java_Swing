@@ -55,6 +55,9 @@ public class MainMenuPanel extends JPanel {
 
             new MyFrame2();
         });
+        bookTicketButton.addActionListener(e -> parentFrame.switchToPanel("Booking"));
+        viewBookingsButton.addActionListener(e -> parentFrame.switchToPanel("ViewBookings"));
+
 
         logoutButton.addActionListener(e -> {
 

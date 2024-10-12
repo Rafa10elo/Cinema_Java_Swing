@@ -36,4 +36,8 @@ public class Ticket {
     public int getSeatNumber() {
         return seatNumber;
     }
+
+    public String toString() {
+        return "Movie: " + movieName + ", Hall: " + showTime + ", Showtime: " + seatNumber;
+    }
 }

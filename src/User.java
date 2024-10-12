@@ -2,17 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static int USERS_COUNT=0;
+    private static int USERS_COUNT=CinemaManagement.getUsersCountFromFile();
     private int USER_ID;
     private String userName;
     private String password;
     private String email;
     private boolean adminProp;
     private  List<Ticket> ticketsList;
-
+    Object USERS_LOCK = new Object();
 
    public User(String userName , String password,  String email){
         USERS_COUNT++;
+      CinemaManagement.setUsersCountToFile();
         USER_ID =USERS_COUNT;
         this.userName = userName;
         this.password =password;
@@ -27,6 +28,7 @@ public class User {
         this.email = email;
         this.adminProp = adminProp;
         this.ticketsList = ticketsList;
+
     }
 
     public static User fromFileFormat(String userData) {
@@ -42,7 +44,9 @@ public class User {
         if (!ticketsData.isEmpty()) {
             String[] ticketsArray = ticketsData.split("\\|");
             for (String ticketString : ticketsArray) {
-                ticketsList.add(Ticket.fromFileFormat(ticketString));
+                if (!ticketString.isEmpty()) {
+                    ticketsList.add(Ticket.fromFileFormat(ticketString));
+                }
             }
         }
         return new User(id, userName, password, email, adminProp, ticketsList);
@@ -50,14 +54,42 @@ public class User {
 
 
 
-        public String toFileFormat() {
-
+    public String toFileFormat() {
         StringBuilder ticketsString = new StringBuilder();
         for (Ticket ticket : ticketsList) {
             ticketsString.append(ticket.toFileFormat()).append("|");
         }
 
-        return USER_ID + "," + userName + "," + password + "," + email + "," + adminProp + "," + ticketsString;
+        return USER_ID + "," + userName + "," + password + "," + email + "," + adminProp + "," + ticketsString.toString();
+    }
+
+
+    public void addTicket(Ticket ticket) {
+        synchronized(USERS_LOCK) {
+            ticketsList.add(ticket);
+        }
+        System.out.println("Ticket added for user: " + userName);
+    }
+
+    public void removeTicket(Ticket ticket) {
+        synchronized(USERS_LOCK) {
+            if (ticketsList.contains(ticket)) {
+                ticketsList.remove(ticket);
+                System.out.println("Ticket removed for user: " + userName);
+            } else {
+                System.out.println("Ticket not found for user: " + userName);
+            }
+        }
+    }
+    public void displayTickets() {
+        System.out.println("User: " + userName + " has the following tickets:");
+        for (Ticket ticket : ticketsList) {
+            System.out.println(ticket);
+        }
+    }
+
+    public List<Ticket> getTicketsList() {
+        return ticketsList;
     }
 
     public String getUserName() {
@@ -70,6 +102,9 @@ public class User {
         return USER_ID;
     }
 
+    public static int getTheStaticCounter(){
+       return USERS_COUNT;
+    }
 
 
 }
