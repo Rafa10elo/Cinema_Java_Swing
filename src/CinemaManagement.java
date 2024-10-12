@@ -34,7 +34,7 @@ public class CinemaManagement {
 
 
     public void setUsersToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/Lenovo/Desktop/Cinema_Java_Swing/Files_Of_The_Project/Users_File.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Users_File.txt"))) {
             for (User user : usersList) {
                 writer.write(user.toFileFormat() + "\n");
             }
@@ -45,7 +45,7 @@ public class CinemaManagement {
 
     public ArrayList<User> getUsersFromFile() {
         ArrayList<User> users = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("C:/Users/Lenovo/Desktop/Cinema_Java_Swing/Files_Of_The_Project/Users_File.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Users_File.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 User user = User.fromFileFormat(line);
@@ -98,7 +98,7 @@ public class CinemaManagement {
         return null;
     }
     public static void setUsersCountToFile() {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Lenovo\\Desktop\\Cinema_Java_Swing\\Files_Of_The_Project\\CNT_FILE.txt"))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("CNT_FILE.txt"))) {
             bufferedWriter.write(Integer.toString(User.getTheStaticCounter()));
         } catch (IOException ex) {
             throw new RuntimeException(ex);
@@ -106,7 +106,7 @@ public class CinemaManagement {
     }
 
     public static int getUsersCountFromFile() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Lenovo\\Desktop\\Cinema_Java_Swing\\Files_Of_The_Project\\CNT_FILE.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CNT_FILE.txt"))) {
             String line = bufferedReader.readLine();
             return (line != null) ? Integer.parseInt(line) : 0;
         } catch (IOException ex) {
@@ -114,8 +114,4 @@ public class CinemaManagement {
         }
     }
 
-    }
-
-
-
-
+}

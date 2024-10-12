@@ -4,12 +4,12 @@ import java.awt.*;
 public class RoundedTextField extends JTextField {
 
     public RoundedTextField(int columns) {
-       super(columns);
-       setOpaque(false);
-     setPreferredSize(new Dimension(100, 50));
-     setBorder(new RoundedBorder(15));
-     setForeground(Color.black);
-    setCaretColor(Color.black);
+        super(columns);
+        setOpaque(false);
+        setPreferredSize(new Dimension(90, 50));
+        setBorder(new RoundedBorder(15));
+        setForeground(Color.black);
+        setCaretColor(Color.black);
  }
 
 protected void paintComponent(Graphics g) {

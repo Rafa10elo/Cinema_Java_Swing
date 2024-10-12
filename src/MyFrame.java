@@ -63,8 +63,6 @@ public class MyFrame extends JFrame {
         }
         return null;
     }
-
-
     public void switchToPanel(String panelName) {
         cardLayout.show(mainPanel, panelName);
     }

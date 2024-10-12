@@ -10,18 +10,15 @@ public class MyFrame2 extends JFrame {
      final private JPanel moviePanelContainer;
     final private Map<Integer, Cinema> cinemaMap = new HashMap<>();
     public MyFrame2() {
-
-
         setTitle("Movies");
-
         setSize(800, 600);
         setBackground(Color.BLACK);
-
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel hallSelectionPanel = createHallSelectionPanel();
         moviePanelContainer = new JPanel();
+        moviePanelContainer.setBackground(Color.BLACK);
         moviePanelContainer.setLayout(new BoxLayout(moviePanelContainer, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(moviePanelContainer);
+        RoundedScrollPane scrollPane = new RoundedScrollPane(moviePanelContainer);
         mainPanel.add(hallSelectionPanel, BorderLayout.NORTH);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
         readHalls();
@@ -83,14 +80,16 @@ public class MyFrame2 extends JFrame {
 
     private JPanel createHallSelectionPanel() {
         JPanel hallPanel = new JPanel();
-        hallPanel.setBackground(Color.GRAY);
+        hallPanel.setBorder(new RoundedBorder(15));
+        hallPanel.setBackground(Color.BLACK);
         hallPanel.setLayout(new FlowLayout());
         JLabel hallLabel = new JLabel("Select Cinema Hall: ");
+        hallLabel.setForeground(Color.white);
         hallPanel.add(hallLabel);
         for (int i = 1; i <= 3; i++) {
-            JButton hallButton = new JButton("Hall " + i);
+            JButton hallButton = new RoundedButton("Hall " + i);
             hallButton.setFocusable(false);
-            hallButton.setBackground(Color.DARK_GRAY);
+            hallButton.setBackground(Color.BLACK);
             hallButton.setForeground(Color.WHITE);
             hallPanel.add(hallButton);
             final int hallNumber = i;
@@ -124,19 +123,31 @@ public class MyFrame2 extends JFrame {
         moviePanel.setBackground(Color.BLACK);
 
         JPanel infoPanel = new JPanel();
-        infoPanel.setBackground(Color.GRAY);
+        infoPanel.setBackground(Color.BLACK);
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
-        infoPanel.add(new JLabel("Name: " + movie.getName()));
-        infoPanel.add(new JLabel("Genre: " + movie.getGenre()));
-        infoPanel.add(new JLabel("ID: " + movie.getId()));
-        infoPanel.add(new JLabel("Show Time: " + movie.getShowTimes()));
-        infoPanel.add(new JLabel("Description: " + movie.getDescription()));
+        infoPanel.setBorder(new RoundedBorder(15));
+        JLabel l1=new JLabel("Name: " + movie.getName());
+        l1.setForeground(Color.white);
+        JLabel l2=new JLabel("Genre: " + movie.getGenre());
+        l2.setForeground(Color.white);
+        JLabel l3=new JLabel("ID: " + movie.getId());
+        l3.setForeground(Color.white);
+        JLabel l4=new JLabel("Show Time: " + movie.getShowTimes());
+        l4.setForeground(Color.white);
+        JLabel l5=new JLabel("Description: " + movie.getDescription());
+        l5.setForeground(Color.white);
+        infoPanel.add(l1);
+        infoPanel.add(l2);
+        infoPanel.add(l3);
+        infoPanel.add(l4);
+        infoPanel.add(l5);
         JLabel posterLabel = new JLabel();
         ImageIcon posterIcon = new ImageIcon(movie.getPosterPath());
         Image posterImage = posterIcon.getImage().getScaledInstance(150, 200, Image.SCALE_SMOOTH);
         posterLabel.setIcon(new ImageIcon(posterImage));
+        posterLabel.setBorder(new RoundedBorder(15));
         JPanel color = new JPanel();
-        color.setBackground(Color.DARK_GRAY);
+        color.setBackground(Color.BLUE);
         moviePanel.add(posterLabel, BorderLayout.WEST);
         moviePanel.add(infoPanel, BorderLayout.CENTER);
         moviePanel.add(color, BorderLayout.SOUTH);

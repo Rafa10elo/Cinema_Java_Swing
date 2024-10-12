@@ -22,7 +22,7 @@ public class RegistrationPanel extends JPanel {
         userLabel.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(10, 7, 10, 7);
         gbc.anchor = GridBagConstraints.EAST;
         add(userLabel, gbc);
 
@@ -52,7 +52,7 @@ public class RegistrationPanel extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         add(passLabel, gbc);
 
-        JPasswordField passText = new RoundedPasswordField(15);
+        JPasswordField passText = new RoundedPasswordField(10);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         add(passText, gbc);
