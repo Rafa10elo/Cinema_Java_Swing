@@ -9,26 +9,28 @@ public class ViewBookingsPanel extends JPanel {
     public ViewBookingsPanel(MyFrame parentFrame, CinemaManagement cinemaManagement) {
         this.parentFrame = parentFrame;
         this.cinemaManagement = cinemaManagement;
-        System.out.println(1);
-      
-        JButton backButton = new JButton("Back to Main Menu");
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
-        setBorder(new RoundedBorder(20));
+
+        RoundedButton backButton = new RoundedButton("Back to Main Menu");
+        backButton.setForeground(Color.WHITE);
+        backButton.setBackground(Color.BLUE);
+        backButton.setPreferredSize(new Dimension(150,30));
 
 
-
-        JButton refreshButton = new JButton("get the Tickets");
-        setLayout(new BorderLayout());
-        setBackground(Color.BLACK);
+        RoundedButton refreshButton = new RoundedButton("get the Tickets");
+        refreshButton.setForeground(Color.WHITE);
+        refreshButton.setBackground(Color.BLUE);
+        refreshButton.setPreferredSize(new Dimension(150,30));
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.add(refreshButton,BorderLayout.EAST);
         panel.add(backButton,BorderLayout.WEST);
         add(panel,BorderLayout.SOUTH);
+        panel.setBackground(Color.black);
 
-        JLabel titleLabel = new JLabel("Your Booked Tickets:", SwingConstants.CENTER);
+        JLabel titleLabel = CustomText.createStyledLabel("Your Booked Tickets:");
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         add(titleLabel, BorderLayout.NORTH);
@@ -36,7 +38,7 @@ public class ViewBookingsPanel extends JPanel {
          ticketsPanel = new JPanel();
         ticketsPanel.setLayout(new BoxLayout(ticketsPanel, BoxLayout.Y_AXIS));
         ticketsPanel.setBackground(Color.BLACK);
-        JScrollPane scrollPane = new JScrollPane(ticketsPanel);
+        RoundedScrollPane scrollPane = new RoundedScrollPane(ticketsPanel);
         add(scrollPane, BorderLayout.CENTER);
 
 
@@ -58,7 +60,7 @@ public class ViewBookingsPanel extends JPanel {
         if (currentUser != null) {
             ArrayList<Ticket> tickets = (ArrayList<Ticket>) currentUser.getTicketsList();
             if (tickets.isEmpty()) {
-                JLabel noTicketsLabel = new JLabel("No tickets booked yet.");
+                JLabel noTicketsLabel =CustomText.createStyledLabel("No tickets booked yet.");
                 noTicketsLabel.setForeground(Color.WHITE);
                 ticketsPanel.add(noTicketsLabel);
 
@@ -71,7 +73,7 @@ public class ViewBookingsPanel extends JPanel {
             }
         } else {
             System.out.println();
-            JLabel noUserLabel = new JLabel("No user logged in.");
+            JLabel noUserLabel = CustomText.createStyledLabel("No user logged in.");
             noUserLabel.setForeground(Color.RED);
             ticketsPanel.add(noUserLabel);
         }

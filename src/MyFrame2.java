@@ -9,8 +9,9 @@ import java.util.List;
 public class MyFrame2 extends JFrame {
      final private JPanel moviePanelContainer;
     final private Map<Integer, Cinema> cinemaMap = new HashMap<>();
-
     public MyFrame2() {
+
+
         setTitle("Movies");
 
         setSize(800, 600);

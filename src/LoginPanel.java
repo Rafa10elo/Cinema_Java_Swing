@@ -12,9 +12,6 @@ public class LoginPanel extends JPanel {
         this.parentFrame = parentFrame;
         this.cinemaManagement = cinemaManagement;
 
-
-
-
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         setBackground(Color.BLACK);
@@ -22,51 +19,49 @@ public class LoginPanel extends JPanel {
         setPreferredSize(new Dimension(400, 400));
 
 
-        JLabel userLabel = new JLabel("Username:");
+        JLabel userLabel = CustomText.createStyledLabel("Username:");
         userLabel.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(10, 9, 10, 5);
         gbc.anchor = GridBagConstraints.EAST;
         add(userLabel, gbc);
 
-        JTextField userText = new JTextField(15);
-        userText. setBorder(new RoundedBorder(20));
+        JTextField userText = new RoundedTextField(12);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         add(userText, gbc);
 
 
-        JLabel passLabel = new JLabel("Password:");
+        JLabel passLabel =CustomText.createStyledLabel("Password:");
         passLabel.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.EAST;
         add(passLabel, gbc);
 
-        JPasswordField passText = new JPasswordField(15);
-        passText.  setBorder(new RoundedBorder(20));
+        JPasswordField passText = new RoundedPasswordField(12);
+
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         add(passText, gbc);
 
 
-        JButton loginButton = new JButton("Login");
+        JButton loginButton = new RoundedButton("Login") ;
+
         loginButton.setForeground(Color.WHITE);
         loginButton.setBackground(Color.BLUE);
-        loginButton.setBorder(new RoundedBorder(20));
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         add(loginButton, gbc);
 
 
-        JButton registerButton = new JButton("Register");
+        JButton registerButton = new RoundedButton("Register");
         registerButton.setForeground(Color.WHITE);
         registerButton.setBackground(Color.BLUE);
-
-        registerButton.setBorder(new RoundedBorder(20));
         gbc.gridx = 1;
+
         add(registerButton, gbc);
 
 
@@ -75,7 +70,7 @@ public class LoginPanel extends JPanel {
             String password = new String(passText.getPassword()).trim();
 
             if (username.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Please enter both username and password.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Please enter both username and password", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -84,7 +79,7 @@ public class LoginPanel extends JPanel {
                     parentFrame.switchToPanel("MainMenu");
 
             } else {
-                JOptionPane.showMessageDialog(this, "Invalid credentials.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Invalid credentials", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -95,4 +90,11 @@ public class LoginPanel extends JPanel {
 
     }
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+    }
 }

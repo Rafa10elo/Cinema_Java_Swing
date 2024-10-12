@@ -18,7 +18,7 @@ public class RegistrationPanel extends JPanel {
 
 
 
-        JLabel userLabel = new JLabel("Username:");
+        JLabel userLabel = CustomText.createStyledLabel("Username:");
         userLabel.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -26,39 +26,39 @@ public class RegistrationPanel extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         add(userLabel, gbc);
 
-        JTextField userText = new JTextField(15);
+        JTextField userText =new RoundedTextField(10);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         add(userText, gbc);
 
 
-        JLabel emailLabel = new JLabel("Email:");
+        JLabel emailLabel = CustomText.createStyledLabel("Email:");
         emailLabel.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.EAST;
         add(emailLabel, gbc);
 
-        JTextField emailText = new JTextField(15);
+        JTextField emailText =new RoundedTextField(10);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         add(emailText, gbc);
 
 
-        JLabel passLabel = new JLabel("Password:");
+        JLabel passLabel = CustomText.createStyledLabel("Password:");
         passLabel.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.EAST;
         add(passLabel, gbc);
 
-        JPasswordField passText = new JPasswordField(15);
+        JPasswordField passText = new RoundedPasswordField(15);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.WEST;
         add(passText, gbc);
 
 
-        JButton registerButton = new JButton("Register");
+        JButton registerButton = new RoundedButton("Register");
         registerButton.setForeground(Color.WHITE);
         registerButton.setBackground(Color.BLUE);
         gbc.gridx = 0;
@@ -67,7 +67,8 @@ public class RegistrationPanel extends JPanel {
         add(registerButton, gbc);
 
 
-        JButton backButton = new JButton("Back");
+        JButton backButton = new RoundedButton("Back");
+
         backButton.setForeground(Color.WHITE);
         backButton.setBackground(Color.BLUE);
         gbc.gridx = 1;

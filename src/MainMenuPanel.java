@@ -20,38 +20,50 @@ public class MainMenuPanel extends JPanel {
         add(welcomeLabel, BorderLayout.NORTH);
 
 
-        JPanel buttonPanel = new JPanel(new FlowLayout());
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.Y_AXIS));
         buttonPanel.setBackground(Color.BLACK);
+        buttonPanel.add(Box.createVerticalGlue());
 
-        JButton bookTicketButton = new JButton("Book a Ticket");
+        JButton bookTicketButton = new RoundedButton("Book a Ticket");
         bookTicketButton.setForeground(Color.WHITE);
         bookTicketButton.setBackground(Color.BLUE);
         bookTicketButton.setFocusable(false);
+        bookTicketButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        JButton viewBookingsButton = new JButton("View Bookings");
+        JButton viewBookingsButton = new RoundedButton("View Bookings");
         viewBookingsButton.setForeground(Color.WHITE);
         viewBookingsButton.setBackground(Color.BLUE);
         viewBookingsButton.setFocusable(false);
+        viewBookingsButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        JButton logoutButton = new JButton("Logout");
+        JButton logoutButton = new RoundedButton("Logout");
         logoutButton.setForeground(Color.WHITE);
-        logoutButton.setBackground(Color.BLUE);
+        logoutButton.setBackground(Color.PINK);
         logoutButton.setFocusable(false);
+        logoutButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        JButton viewHalls = new JButton("View Halls and Movies");
+        JButton viewHalls = new RoundedButton("View Halls and Movies");
         viewHalls.setForeground(Color.WHITE);
         viewHalls.setBackground(Color.BLUE);
         viewHalls.setFocusable(false);
+        viewHalls.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        buttonPanel.add(Box.createVerticalGlue());
 
         buttonPanel.add(bookTicketButton);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         buttonPanel.add(viewBookingsButton);
-        buttonPanel.add(logoutButton);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         buttonPanel.add(viewHalls);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        buttonPanel.add(logoutButton);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+
+
+
         add(buttonPanel, BorderLayout.CENTER);
 
         viewHalls.addActionListener(e -> {
-
-            cinemaManagement.logout();
 
             new MyFrame2();
         });
