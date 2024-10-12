@@ -52,7 +52,7 @@ public class MyFrame extends JFrame {
             this.revalidate();
             this.repaint();
         });
-        //this.getContentPane().setBackground();
+
         this.setVisible(true);
     }
     public JPanel getPanel(String panelName) {
@@ -64,8 +64,7 @@ public class MyFrame extends JFrame {
         return null;
     }
 
-    // for switching between the panels
-    // for swiching between the pannels
+
     public void switchToPanel(String panelName) {
         cardLayout.show(mainPanel, panelName);
     }

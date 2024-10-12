@@ -14,7 +14,7 @@ public class RoundedBorder extends AbstractBorder {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 
-        g2d.setColor(Color.GRAY);
+        g2d.setColor(Color.BLUE);
         g2d.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
     }
 

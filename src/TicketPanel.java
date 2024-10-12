@@ -14,26 +14,26 @@ public class TicketPanel extends JPanel {
         this.parentPanel = parentPanel;
 
         setLayout(new GridLayout(1, 4));
-        setBackground(Color.DARK_GRAY);
+        setBackground(Color.BLACK);
         setBorder(new RoundedBorder(20));
 
 
-        JLabel movieLabel = new JLabel("Movie: " + ticket.getMovieName());
+        JLabel movieLabel = CustomText.createStyledLabel("Movie: " + ticket.getMovieName());
         movieLabel.setForeground(Color.WHITE);
         add(movieLabel);
 
 
-        JLabel showtimeLabel = new JLabel("Showtime: " + ticket.getShowTime());
+        JLabel showtimeLabel = CustomText.createStyledLabel("Showtime: " + ticket.getShowTime());
         showtimeLabel.setForeground(Color.WHITE);
         add(showtimeLabel);
 
 
-        JLabel seatLabel = new JLabel("Seat: " + ticket.getSeatNumber());
+        JLabel seatLabel = CustomText.createStyledLabel("Seat: " + ticket.getSeatNumber());
         seatLabel.setForeground(Color.WHITE);
         add(seatLabel);
 
 
-        JButton removeButton = new JButton("Remove");
+        JButton removeButton = new RoundedButton("Remove");
         removeButton.setBackground(Color.RED);
         removeButton.setForeground(Color.WHITE);
         add(removeButton);
