@@ -27,10 +27,11 @@ public class ViewBookingsPanel extends JPanel {
         panel.setLayout(new BorderLayout());
         panel.add(refreshButton,BorderLayout.EAST);
         panel.add(backButton,BorderLayout.WEST);
+        panel.setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
         add(panel,BorderLayout.SOUTH);
         panel.setBackground(Color.black);
 
-        JLabel titleLabel = CustomText.createStyledLabel("Your Booked Tickets:");
+        JLabel titleLabel = CustomText.createStyledHeader("Your Booked Tickets:");
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         add(titleLabel, BorderLayout.NORTH);
