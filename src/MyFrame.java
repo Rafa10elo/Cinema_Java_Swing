@@ -7,14 +7,15 @@ public class MyFrame extends JFrame {
 
     private LodingPage lodingPage;
     private CardLayout cardLayout;
-    private JPanel mainPanel;
+    public JPanel mainPanel;
     private CinemaManagement cinemaManagement;
-
+    private JPanel displayMovies;
     MyFrame() {
         this.setTitle("Cinema");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-        this.setSize(600, 400);
+
+        this.setSize(new Dimension(2000,2000));
         setLocationRelativeTo(null);
 
 
@@ -22,13 +23,14 @@ public class MyFrame extends JFrame {
         cinemaManagement = new CinemaManagement();
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
-
+        displayMovies=new MyFrame2(this,cinemaManagement);
         ViewBookingsPanel viewBookingsPanel = new ViewBookingsPanel(this, cinemaManagement);
         LoginPanel loginPanel = new LoginPanel(this, cinemaManagement);
         RegistrationPanel registrationPanel = new RegistrationPanel(this, cinemaManagement);
         MainMenuPanel mainMenuPanel = new MainMenuPanel(this, cinemaManagement);
         BookingPanel bookingPanel = new BookingPanel(this, cinemaManagement);
 
+        mainPanel.setPreferredSize(new Dimension(500,500));
 
         mainPanel.add(loginPanel, "Login");
         mainPanel.add(registrationPanel, "Register");
@@ -36,10 +38,14 @@ public class MyFrame extends JFrame {
         mainPanel.add(bookingPanel, "Booking");
         mainPanel.add(viewBookingsPanel, "ViewBookings");
 
+   //     displayMovies.setPreferredSize(new Dimension(1500,100));
+        mainPanel.add(displayMovies,"DisplayMovies");
+
 
         JPanel centeredPanel = new JPanel(new GridBagLayout());
         centeredPanel.setBackground(new Color(15, 15, 15));
         centeredPanel.add(mainPanel);
+        mainPanel.setName("MainPanel");
 
 
         this.add(lodingPage, BorderLayout.CENTER);
@@ -66,7 +72,6 @@ public class MyFrame extends JFrame {
     public void switchToPanel(String panelName) {
         cardLayout.show(mainPanel, panelName);
     }
-
 
 
     public static void main(String[] args) {

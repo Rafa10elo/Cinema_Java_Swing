@@ -6,22 +6,38 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
-public class MyFrame2 extends JFrame {
+public class MyFrame2 extends JPanel {
      final private JPanel moviePanelContainer;
     final private Map<Integer, Cinema> cinemaMap = new HashMap<>();
-    public MyFrame2() {
-        setTitle("Movies");
-        setSize(800, 600);
+    MyFrame parentFrame ;
+    CinemaManagement cinemaManagement;
+    public MyFrame2(MyFrame frame,CinemaManagement cinemaManagement) {
+       // setSize(800, 600);
+       // setPreferredSize(new Dimension(1000,1000));
+
+        parentFrame = frame;
+        this.cinemaManagement = cinemaManagement;
         setBackground(Color.BLACK);
+        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        setPreferredSize(new Dimension(1500,1000));
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel hallSelectionPanel = createHallSelectionPanel();
+
         moviePanelContainer = new JPanel();
         moviePanelContainer.setBackground(Color.BLACK);
         moviePanelContainer.setLayout(new BoxLayout(moviePanelContainer, BoxLayout.Y_AXIS));
         RoundedScrollPane scrollPane = new RoundedScrollPane(moviePanelContainer);
+        JButton backButton = new RoundedButton("Back to Main Menu");
+        backButton.addActionListener(e -> {
+            parentFrame.mainPanel.setPreferredSize(new Dimension(500,500));
+
+            parentFrame.switchToPanel("MainMenu");
+        });
         mainPanel.add(hallSelectionPanel, BorderLayout.NORTH);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
         readHalls();
+
+       mainPanel.add(backButton,BorderLayout.SOUTH);
         add(mainPanel);
         setVisible(true);
     }
@@ -93,7 +109,7 @@ public class MyFrame2 extends JFrame {
             hallButton.setForeground(Color.WHITE);
             hallPanel.add(hallButton);
             final int hallNumber = i;
-            hallButton.addActionListener(e -> displayMoviesForHall(hallNumber));
+            hallButton.addActionListener(e -> {System.out.println("NIGGA");displayMoviesForHall(hallNumber);});
         }
         return hallPanel;
     }
@@ -136,11 +152,16 @@ public class MyFrame2 extends JFrame {
         l4.setForeground(Color.white);
         JLabel l5=CustomText.createStyledLabel("Description: " + movie.getDescription());
         l5.setForeground(Color.white);
+        JButton book=new RoundedButton("Book a Ticket!");
+        book.setBackground(Color.black);
+        book.setForeground(Color.white);
+
         infoPanel.add(l1);
         infoPanel.add(l2);
         infoPanel.add(l3);
         infoPanel.add(l4);
         infoPanel.add(l5);
+        infoPanel.add(book);
         JLabel posterLabel = new JLabel();
         ImageIcon posterIcon = new ImageIcon(movie.getPosterPath());
         Image posterImage = posterIcon.getImage().getScaledInstance(150, 200, Image.SCALE_SMOOTH);

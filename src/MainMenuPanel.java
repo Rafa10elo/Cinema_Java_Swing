@@ -12,6 +12,7 @@ public class MainMenuPanel extends JPanel {
         this.setBackground(Color.BLACK);
         setBorder(new RoundedBorder(20));
         setLayout(new BorderLayout());
+        //setPreferredSize(new Dimension(1600,1000));
 
 
         JLabel welcomeLabel = new JLabel("Welcome to Cinema Management System!", SwingConstants.CENTER);
@@ -30,6 +31,10 @@ public class MainMenuPanel extends JPanel {
         bookTicketButton.setBackground(Color.BLUE);
         bookTicketButton.setFocusable(false);
         bookTicketButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+
+
+
 
         JButton viewBookingsButton = new RoundedButton("View Bookings");
         viewBookingsButton.setForeground(Color.WHITE);
@@ -64,8 +69,9 @@ public class MainMenuPanel extends JPanel {
         add(buttonPanel, BorderLayout.CENTER);
 
         viewHalls.addActionListener(e -> {
+            parentFrame.mainPanel.setPreferredSize(new Dimension(1500,700));
+parentFrame.switchToPanel("DisplayMovies");
 
-            new MyFrame2();
         });
         bookTicketButton.addActionListener(e -> parentFrame.switchToPanel("Booking"));
         viewBookingsButton.addActionListener(e -> parentFrame.switchToPanel("ViewBookings"));
